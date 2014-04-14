@@ -7,6 +7,7 @@
 # "http://www.ncbi.nlm.nih.gov/nuccore/FR851252.1"
 
 from Bio import Entrez
+import time
 
 # Entrez needs to know your email
 email = 'vsochat@stanford.edu'
@@ -23,8 +24,13 @@ ids = record['IdList']
 fields = ['Id','GBSeq_moltype','GBSeq_source','GBSeq_primary-accession','GBSeq_definition','GBSeq_topology','GBSeq_length','organism','organelle','mol_type','isolation_source','host','db_xref','clone','environmental_sample','country','metagenomic','GBSeq_taxonomy','GBReference_title','GBSeq_organism','GBSeq_locus']
 
 data = []
+count = 1
 # For each ID, obtain the record
 for id in ids:
+  # Tell the user our progress
+  print "Parsing " + str(count) ": " + str(id) + " of " + str(len(ids)) 
+  # Pause for one second
+  time.sleep(1)
   handle = Entrez.esearch(db='nuccore',term=id)
   record = Entrez.read(handle)
   if "IdList" in record:
@@ -78,12 +84,14 @@ for id in ids:
     tmp[19] = record[0]['GBSeq_organism']
     tmp[20] = record[0]['GBSeq_locus']
     data.append(tmp)
+    count = count + 1
 
 # Save to text file
-filey = open('/home/vanessa/Desktop/gutmap.tab','w')
+filey = open('/scratch/users/vsochat/DATA/GUTMAP/gutmap.tab','w')
 filey.writelines("\t".join(fields) + "\n")
 for d in data:
   filey.writelines("\t".join(d) + "\n")
+
 filey.close()
 
 
