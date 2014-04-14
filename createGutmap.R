@@ -13,7 +13,7 @@ setwd('/home/vanessa/Documents/Dropbox/Code/Python/gutmap')
 raw = read.table('gutmap.tab',sep="\t",head=TRUE)
 
 # Set API key (must be generated when time to run!)
-API = "#"
+API = "your-API-key-here"
 
 # For each unique location, use Google API to look up
 loc = unique(raw$country)
@@ -35,7 +35,7 @@ for (l in 1:length(loc)){
     # Get rid of colons
     location = sub(":","",location)
     location = strsplit(location," ")
-    location = cat(location[[1]],sep="+")
+    location = paste(location[[1]], collapse="+")
     q = paste(query,"address=","USA+Chicago,+IL","&sensor=false&key=",API,sep="")
     result = getURL(q)
     data = fromJSON(result)
