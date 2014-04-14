@@ -28,7 +28,7 @@ count = 1
 # For each ID, obtain the record
 for id in ids:
   # Tell the user our progress
-  print "Parsing " + str(count) ": " + str(id) + " of " + str(len(ids)) 
+  print "Parsing " + str(count) + ": " + str(id) + " of " + str(len(ids)) 
   # Pause for one second
   time.sleep(1)
   handle = Entrez.esearch(db='nuccore',term=id)
