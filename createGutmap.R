@@ -25,7 +25,6 @@ place = c()
 formatted = c()
 
 # Format our query string to get json result
-query = "http://maps.googleapis.com/maps/api/geocode/json?"
 query = "https://maps.googleapis.com/maps/api/geocode/json?"
 
 for (l in 1:length(loc)){
@@ -36,7 +35,7 @@ for (l in 1:length(loc)){
     location = sub(":","",location)
     location = strsplit(location," ")
     location = paste(location[[1]], collapse="+")
-    q = paste(query,"address=","USA+Chicago,+IL","&sensor=false&key=",API,sep="")
+    q = paste(query,"address=",location,"&sensor=false&key=",API,sep="")
     result = getURL(q)
     data = fromJSON(result)
     if (data$status %in% "OK") {
