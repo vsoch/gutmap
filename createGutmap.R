@@ -13,7 +13,7 @@ setwd('/home/vanessa/Documents/Dropbox/Code/Python/gutmap')
 raw = read.table('gutmap.tab',sep="\t",head=TRUE)
 
 # Set API key (must be generated when time to run!)
-API = "your-API-key-here"
+API = "AIzaSyCFwrvmU1ukQe-GevUpSXiqW9caOX71xwo"
 
 # For each unique location, use Google API to look up
 loc = unique(raw$country)
@@ -65,3 +65,4 @@ for (r in 1:dim(raw)[1]){
 }
 
 # Now we can make a map in R, or export data to make with Google Tables
+# http://www.r-bloggers.com/heatmap-of-toronto-traffic-signals-using-rgooglemaps/
