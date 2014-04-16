@@ -6,6 +6,7 @@
 # Example page
 # "http://www.ncbi.nlm.nih.gov/nuccore/FR851252.1"
 
+import numpy as nu
 from Bio import Entrez
 import time
 
