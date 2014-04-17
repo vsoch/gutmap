@@ -14,7 +14,7 @@ raw = read.table('gutmap52704.tab',sep="\t",head=FALSE)
 raw[,16] = as.character(raw[,16])
 
 # Set API key (must be generated when time to run!)
-API = "AIzaSyCFwrvmU1ukQe-GevUpSXiqW9caOX71xwo"
+API = "APIKEYHERE"
 
 # For each unique location, use Google API to look up
 loc = unique(raw[,16])
